@@ -1,0 +1,48 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="order">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:int" name="orderId"/>
+                <xs:element type="xs:string" name="description"/>
+                <xs:element type="xs:string" name="RequestDate"/>
+                <xs:element name="item" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="book">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="bookId" type="xs:byte"/>
+                                        <xs:element name="bookName" type="xs:string"/>
+                                        <xs:element name="genre">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:enumeration value="science-fiction"></xs:enumeration>
+                                                    <xs:enumeration value="mystery"></xs:enumeration>
+                                                    <xs:enumeration value="thriller"></xs:enumeration>
+                                                    <xs:enumeration value="drama"></xs:enumeration>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="publishDate" type="xs:string"/>
+                                        <xs:element name="authors" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="bio" type="xs:string"/>
+                                                    <xs:element name="firstName" type="xs:string"/>
+                                                    <xs:element name="lastName" type="xs:string"/>
+                                                    <xs:element name="penName" type="xs:string" minOccurs="0" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="quantity" type="xs:byte"/>
+                            <xs:element name="price" type="xs:short"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
